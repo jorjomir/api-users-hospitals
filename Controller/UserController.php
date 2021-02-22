@@ -84,6 +84,15 @@ class UserController
         $route_controller->blankResponse();
     }
 
+    public function getAllUsers() {
+        $route_controller = new RouteController();
+        $repo = new \Repository\UserRepository();
+
+        $users = $repo->findAll();
+
+        $route_controller->response($users);
+    }
+
     function allKeysExist(array $keys, array $arr) {
         return !array_diff_key(array_flip($keys), $arr);
     }

@@ -19,7 +19,8 @@ class RouteController
         $this->route->get('/user',   'UserController@getUserData');   //get User by ID
         $this->route->post('/create-user', 'UserController@createNewUser'); //create new User
         $this->route->put('/update-user',  'UserController@updateUser');    //update User
-        $this->route->delete('/delete-user',  'UserController@deleteUser');    //update User
+        $this->route->delete('/delete-user',  'UserController@deleteUser');    //delete User
+        $this->route->get('/get-all-users',  'UserController@getAllUsers');    //get all users
 
         $this->route->get('/about', function() { echo 'fdsf'; });
 

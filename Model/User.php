@@ -15,21 +15,6 @@ class User {
         'email', 'first_name', 'last_name', 'type', 'workplace_id'
     );
 
-    /*
-    public function __construct($email, $first_name, $last_name, $type, $workplace_id, $id=null, $created_at=null)
-    {
-        $this->id = $id;
-        $this->email = $email;
-        $this->first_name = $first_name;
-        $this->last_name = $last_name;
-        $this->type = $type;
-        $this->workplace_id = $workplace_id;
-
-        $timezone=new \DateTimeZone('Europe/Sofia');
-        $this->created_at = new \DateTime('now', $timezone);
-    }
-    */
-
     public function toArray(){
         $arr = array(
             'id' => $this->getId(),
