@@ -2,47 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1eaa657c-4193-4f16-8269-faa71dcef9de" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/credo.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controller/RouteController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controller/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repository/Database.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repository/UserRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/bramus/router/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/bramus/router/.php_cs.dist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/bramus/router/.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/bramus/router/CHANGELOG.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/bramus/router/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/bramus/router/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/bramus/router/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/bramus/router/demo-multilang/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/bramus/router/demo-multilang/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/bramus/router/demo/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/bramus/router/demo/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/bramus/router/phpunit.xml.dist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/bramus/router/src/Bramus/Router/Router.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/bramus/router/tests/RouterTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/bramus/router/tests/bootstrap.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +75,7 @@
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+              <caret line="2" column="6" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -236,12 +196,12 @@
       <updated>1613764610612</updated>
       <workItem from="1613764611880" duration="601000" />
       <workItem from="1613850278757" duration="15862000" />
-      <workItem from="1614019523952" duration="11235000" />
+      <workItem from="1614019523952" duration="11416000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27698000" />
+    <option name="totallyTimeSpent" value="27879000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="704" extended-state="6" />
@@ -348,7 +308,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+          <caret line="2" column="6" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
         </state>
       </provider>
     </entry>
