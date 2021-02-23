@@ -74,5 +74,18 @@ class HospitalRepository extends Database
         return parent::getResults($query);
     }
 
+    public function findAllOrderedByEmployeeCount($order) {
+        // get them as variables so we can concatenate them into the query
+        $hospital_table = parent::HOSPITALS_TABLE;
+        $users_table = parent::USERS_TABLE;
+
+        $query = "SELECT {$hospital_table}.*, count({$users_table}.workplace_id) as employees_count FROM {$hospital_table}
+                    LEFT JOIN {$users_table} ON ({$hospital_table}.id = {$users_table}.workplace_id)
+                    GROUP BY {$hospital_table}.id
+                    ORDER BY employees_count {$order}";
+
+        return parent::getResults($query);
+    }
+
 
 }

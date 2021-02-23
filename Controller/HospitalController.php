@@ -104,9 +104,29 @@ class HospitalController
 
     public function getAllHospitals() {
         $route_controller = new RouteController();
+        $data = $route_controller->getPostData();
         $repo = new \Repository\HospitalRepository();
 
+        if(isset($data['users_count_order'])) {
+            $this->getAllHospitalsOrderedByEmployee($data['users_count_order']);
+            return;
+        }
+
         $hospitals = $repo->findAll();
+
+        $route_controller->response($hospitals);
+    }
+
+    public function getAllHospitalsOrderedByEmployee($order) {
+        $route_controller = new RouteController();
+
+        $order = strtoupper($order);
+        if($order != "ASC" && $order != "DESC") {
+            $route_controller->returnError(400, "Invalid order provided!");
+        }
+
+        $repo = new \Repository\HospitalRepository();
+        $hospitals = $repo->findAllOrderedByEmployeeCount($order);
 
         $route_controller->response($hospitals);
     }

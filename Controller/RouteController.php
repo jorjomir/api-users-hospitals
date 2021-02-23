@@ -34,9 +34,6 @@ class RouteController
         $this->route->delete('/delete-hospital',  'HospitalController@deleteHospital');
         $this->route->get('/get-all-hospitals',  'HospitalController@getAllHospitals');
 
-
-
-
     }
 
     public function getPostData() {
