@@ -20,11 +20,12 @@ class UserRepository extends Database
     }
 
     public function createNewUser(\Model\User $user) {
+
         $query = sprintf(
-            "INSERT INTO %s (email, first_name, last_name, type, workplace_id, created_at) 
-                    VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+            "INSERT INTO %s (email, first_name, last_name, type, workplace_id) 
+                    VALUES ('%s', '%s', '%s', %s, %s)",
             parent::USERS_TABLE, $user->getEmail(), $user->getFirstName(), $user->getLastName(),
-            $user->getType(), $user->getWorkplaceId(), date('Y-m-d H:i:s'));
+            $user->getType(), $user->getWorkplaceId());
 
         parent::executeQuery($query);
     }

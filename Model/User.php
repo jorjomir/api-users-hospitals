@@ -12,8 +12,11 @@ class User {
     private $created_at;
 
     const MANDATORY_USER_COLUMNS = array(
-        'email', 'first_name', 'last_name', 'type', 'workplace_id'
+        'email', 'first_name', 'last_name', 'type'
     );
+
+    const DOCTOR_TYPE = 1;
+    const PATIENT_TYPE = 0;
 
     public function toArray(){
         $arr = array(
@@ -140,7 +143,11 @@ class User {
      */
     public function getWorkplaceId()
     {
-        return $this->workplace_id;
+        if(is_null($this->workplace_id)) {
+            return 'NULL';
+        } else {
+            return $this->workplace_id;
+        }
     }
 
     /**

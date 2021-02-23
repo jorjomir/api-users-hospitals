@@ -7,7 +7,6 @@ use Model\User;
 
 class UserController
 {
-
     public function getUserData() {
         $route_controller = new RouteController();
         $data = $route_controller->getPostData();
@@ -37,6 +36,9 @@ class UserController
         }
         $user = new \Model\User();
         $user->setAllData($data);
+        if($user->getType() == User::PATIENT_TYPE) {
+            $user->setWorkplaceId(NULL);
+        }
 
         $repository = new \Repository\UserRepository();
         $repository->createNewUser($user);
@@ -59,6 +61,10 @@ class UserController
 
         if( count($existing_user) == 0 ) {
             $route_controller->returnError(400, "There's no existing user with this ID!");
+        }
+
+        if($input_user->getType() == User::PATIENT_TYPE) {
+            $input_user->setWorkplaceId(NULL);
         }
 
         $repo->updateUser($input_user);
