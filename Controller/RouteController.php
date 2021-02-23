@@ -16,13 +16,25 @@ class RouteController
     public function matchRoute() {
         $this->route->setNamespace('\Controller');
 
-        $this->route->get('/user',   'UserController@getUserData');   //get User by ID
-        $this->route->post('/create-user', 'UserController@createNewUser'); //create new User
-        $this->route->put('/update-user',  'UserController@updateUser');    //update User
-        $this->route->delete('/delete-user',  'UserController@deleteUser');    //delete User
-        $this->route->get('/get-all-users',  'UserController@getAllUsers');    //get all users
+        /*
+         * User routes
+         */
+        $this->route->get('/user',   'UserController@getUserData');
+        $this->route->post('/create-user', 'UserController@createNewUser');
+        $this->route->put('/update-user',  'UserController@updateUser');
+        $this->route->delete('/delete-user',  'UserController@deleteUser');
+        $this->route->get('/get-all-users',  'UserController@getAllUsers');
 
-        $this->route->get('/about', function() { echo 'fdsf'; });
+        /*
+         * Hospital routes
+         */
+        $this->route->get('/hospital',  'HospitalController@getHospitalData');
+        $this->route->post('/create-hospital', 'HospitalController@createNewHospital');
+        $this->route->put('/update-hospital',  'HospitalController@updateHospital');
+        $this->route->get('/get-all-hospitals',  'HospitalController@getAllHospitals');
+
+
+
 
     }
 

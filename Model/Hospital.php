@@ -9,7 +9,7 @@ class Hospital
     private $address;
     private $phone;
 
-    const MANDATORY_USER_COLUMNS = array(
+    const MANDATORY_HOSPITAL_COLUMNS = array(
         'name', 'address', 'phone'
     );
 
@@ -18,7 +18,7 @@ class Hospital
         $arr = array(
             'id' => $this->getId(),
             'name' => $this->getName(),
-            'address' => $this->getPhone(),
+            'address' => $this->getAddress(),
             'phone' => $this->getPhone(),
         );
 

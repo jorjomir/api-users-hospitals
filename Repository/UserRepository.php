@@ -49,10 +49,10 @@ class UserRepository extends Database
     }
 
     public function findAll() {
-        $query = "SELECT * FROM users";
-        $results = parent::getResults($query);
+        $query = sprintf(
+            "SELECT * FROM %s", parent::USERS_TABLE);
 
-        return $results;
+        return parent::getResults($query);
     }
 
 

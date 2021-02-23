@@ -12,6 +12,7 @@ class Database
     public $mysqli;
 
     const USERS_TABLE = "users";
+    const HOSPITALS_TABLE = "hospitals";
 
     public function __construct() {
         $this->db_connect();
@@ -26,7 +27,6 @@ class Database
     public function executeQuery($query) {
         if (!$results = $this->mysqli->query($query)) {
             header("HTTP/1.0 400 Input data error!");
-            echo $this->mysqli->error;
             die;
         }
     }
