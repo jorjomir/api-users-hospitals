@@ -34,13 +34,17 @@ class UserController
         if(!$this->allKeysExist(User::MANDATORY_USER_COLUMNS, $data)) {
             $route_controller->returnError(400, "All user keys must be included!");
         }
+        $repository = new \Repository\UserRepository();
+
+        if( count( $repository->getUserByEmail($data['email']) ) > 0 ) {
+            $route_controller->returnError(400, "User with this email already exists!");
+        }
         $user = new \Model\User();
         $user->setAllData($data);
         if($user->getType() == User::PATIENT_TYPE) {
             $user->setWorkplaceId(NULL);
         }
 
-        $repository = new \Repository\UserRepository();
         $repository->createNewUser($user);
 
         $route_controller->blankResponse();

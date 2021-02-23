@@ -19,6 +19,15 @@ class UserRepository extends Database
         return parent::getResults($query);
     }
 
+    public function getUserByEmail($email) {
+        $query = sprintf(
+            "SELECT * FROM %s WHERE email='%s'",
+            parent::USERS_TABLE, $email);
+
+        return parent::getResults($query);
+    }
+
+
     public function createNewUser(\Model\User $user) {
 
         $query = sprintf(

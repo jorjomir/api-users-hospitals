@@ -31,6 +31,7 @@ class RouteController
         $this->route->get('/hospital',  'HospitalController@getHospitalData');
         $this->route->post('/create-hospital', 'HospitalController@createNewHospital');
         $this->route->put('/update-hospital',  'HospitalController@updateHospital');
+        $this->route->delete('/delete-hospital',  'HospitalController@deleteHospital');
         $this->route->get('/get-all-hospitals',  'HospitalController@getAllHospitals');
 
 

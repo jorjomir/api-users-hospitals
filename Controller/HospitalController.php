@@ -66,20 +66,38 @@ class HospitalController
         $route_controller->blankResponse();
     }
 
-    public function deleteUser() {
+    public function deleteHospital() {
         $route_controller = new RouteController();
         $data = $route_controller->getPostData();
 
         if(!isset($data['id'])) {
             $route_controller->returnError(400, "No ID provided!");
         }
-        $repo = new \Repository\UserRepository();
-
-        $user = $repo->getUser($data['id']);
-        if(count($user) == 0) {
-            $route_controller->returnError(400, "No user with this ID was found!");
+        $delete_method = '';
+        if(isset($data['associated_users_method'])) {
+            if($data['associated_users_method'] == Hospital::EMPLOYEES_METHOD_DELETE) {
+                $delete_method = Hospital::EMPLOYEES_METHOD_DELETE;
+            } elseif ($data['associated_users_method'] == Hospital::EMPLOYEES_METHOD_SAVE) {
+                $delete_method = Hospital::EMPLOYEES_METHOD_SAVE;
+            } else {
+                $route_controller->returnError(400, "Associated users method is not valid!");
+            }
+        } else {
+            $route_controller->returnError(400, "Associated users method not provided!");
         }
-        $repo->deleteUser($data['id']);
+
+        $repo = new \Repository\HospitalRepository();
+
+        $hospital = $repo->getHospital($data['id']);
+        if(count($hospital) == 0) {
+            $route_controller->returnError(400, "No hospital with this ID was found!");
+        }
+
+        if($delete_method == Hospital::EMPLOYEES_METHOD_DELETE) {
+            $repo->deleteHospitalAndDeleteUsers($data['id']);
+        } else {
+            $repo->deleteHospitalAndSaveUsers($data['id']);
+        }
 
         $route_controller->blankResponse();
     }

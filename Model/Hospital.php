@@ -12,6 +12,8 @@ class Hospital
     const MANDATORY_HOSPITAL_COLUMNS = array(
         'name', 'address', 'phone'
     );
+    const EMPLOYEES_METHOD_DELETE = "delete";
+    const EMPLOYEES_METHOD_SAVE = "save";
 
     public function toArray()
     {
