@@ -66,6 +66,8 @@ class UserRepository extends Database
     }
 
     public function searchByWorkplaceTitle($title) {
+
+        // get constants as variables so we can concatenate them into the query
         $users_table = parent::USERS_TABLE;
         $hospitals_table = parent::HOSPITALS_TABLE;
 

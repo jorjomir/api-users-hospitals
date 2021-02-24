@@ -27,7 +27,6 @@ class Database
     public function executeQuery($query) {
         if (!$results = $this->mysqli->query($query)) {
             header("HTTP/1.0 400 Input data error!");
-            echo $this->mysqli->error;
             die;
         }
     }

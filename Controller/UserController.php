@@ -41,6 +41,7 @@ class UserController
         }
         $user = new \Model\User();
         $user->setAllData($data);
+
         if($user->getType() == User::PATIENT_TYPE) {
             $user->setWorkplaceId(NULL);
         }
@@ -101,16 +102,19 @@ class UserController
         $repo = new \Repository\UserRepository();
 
         if(isset($data['workplace_id'])) {
+
             $users = $repo->searchByWorkplaceId($data['workplace_id']);
             $route_controller->response($users);
 
             return;
         } elseif (isset($data['workplace_title'])) {
+
             $users = $repo->searchByWorkplaceTitle($data['workplace_title']);
             $route_controller->response($users);
 
             return;
         } elseif (isset($data['user_name'])) {
+
             $users = $repo->searchByName($data['user_name']);
             $route_controller->response($users);
 
@@ -118,11 +122,6 @@ class UserController
         } else {
             $route_controller->returnError(400, "You must include search parameters!");
         }
-
-        $repo = new \Repository\HospitalRepository();
-        $hospitals = $repo->findAllOrderedByEmployeeCount($order);
-
-        $route_controller->response($hospitals);
     }
 
     public function getAllUsers() {

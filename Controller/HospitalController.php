@@ -74,11 +74,15 @@ class HospitalController
             $route_controller->returnError(400, "No ID provided!");
         }
         $delete_method = '';
+
         if(isset($data['associated_users_method'])) {
+
             if($data['associated_users_method'] == Hospital::EMPLOYEES_METHOD_DELETE) {
                 $delete_method = Hospital::EMPLOYEES_METHOD_DELETE;
+
             } elseif ($data['associated_users_method'] == Hospital::EMPLOYEES_METHOD_SAVE) {
                 $delete_method = Hospital::EMPLOYEES_METHOD_SAVE;
+
             } else {
                 $route_controller->returnError(400, "Associated users method is not valid!");
             }
