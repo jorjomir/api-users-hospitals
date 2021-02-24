@@ -6,8 +6,9 @@ To start the API:
  - Create database
  - Import export.sql into it
  - Edit [/Repository/Database](https://github.com/jorjomir/api-users-hospitals/blob/master/Repository/Database.php) constants for DB connection
- - Open Terminal/CMD in the root directory and type "php -S localhost:8080"
+ - Open Terminal/CMD in the root directory and type "php -S localhost:8080" to start local server.
  - Import the Postman collection for easier testing
+
 There are descriptions in the more complicated Postman requests!
  
 The condition of the task can be found [here](https://github.com/jorjomir/api-users-hospitals/blob/master/api-task.md).
