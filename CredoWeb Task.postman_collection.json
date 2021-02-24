@@ -1,0 +1,441 @@
+{
+	"info": {
+		"_postman_id": "c8d58312-d57b-4479-8c69-46bd09c71776",
+		"name": "CredoWeb Task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get User By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "georgi.msabev@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "Georgi",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Sabev",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/create-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"create-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "24",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "georgimisa@abv.bg",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "Georgi",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Sabev",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/update-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"update-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/delete-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"delete-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "order_column",
+									"value": "email",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "order_type",
+									"value": "desc",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/get-all-users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"get-all-users"
+							]
+						},
+						"description": "If you want all users unordered send the request without body.\r\nFor order:\r\n\"order_column\" is necessary\r\n\"order_type\" isn't necessary, by default it's ascending. Possible values are \"ASC\" and \"DESC\""
+					},
+					"response": []
+				},
+				{
+					"name": "Search Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "workplace_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "workplace_title",
+									"value": "Tokuda",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "user_name",
+									"value": "georgi",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/search-users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"search-users"
+							]
+						},
+						"description": "Searching can be done by 3 parameters separately:\r\n - workplace_id\r\n - workplace_title\r\n - user_name (searching in both First and Last name)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hospitals",
+			"item": [
+				{
+					"name": "Get Hospital By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/hospital",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hospital"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Hospital",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Avis Medika",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Pleven",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0893424243",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/create-hospital",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"create-hospital"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Hospital",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Avis Medika",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Sofia",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0883242233",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/update-hospital",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"update-hospital"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Hospital",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "associated_users_method",
+									"value": "delete",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/delete-hospital",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"delete-hospital"
+							]
+						},
+						"description": "Two parameters MUST be provided:\r\n - id\r\n - associated_users_method  \r\n\r\nIf the second parameter's value is:\r\n - \"save\" the associated users' workplace_id and type will become NULL \r\n - \"delete\" the associated users will be deleted"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Hospitals",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "users_count_order",
+									"value": "asc",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/get-all-hospitals",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"get-all-hospitals"
+							]
+						},
+						"description": "You can either just list all hospitals, or sort them by their employees \r\ncount by providing parameter \"users_count_order\" and sort them ASC/DESC."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
