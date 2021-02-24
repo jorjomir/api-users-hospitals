@@ -3,6 +3,8 @@
 
 namespace Repository;
 
+use Model\User;
+
 class HospitalRepository extends Database
 {
 
@@ -40,9 +42,10 @@ class HospitalRepository extends Database
 
     public function deleteHospitalAndSaveUsers($hospital_id) {
         $update_users_workplace_query = sprintf(
-            "UPDATE %s SET workplace_id = NULL WHERE workplace_id = %s",
-            parent::USERS_TABLE, $hospital_id
+            "UPDATE %s SET workplace_id=NULL, type=%s WHERE workplace_id=%s",
+            parent::USERS_TABLE, User::PATIENT_TYPE, $hospital_id
         );
+
         parent::executeQuery($update_users_workplace_query);
 
         $this->deleteHospital($hospital_id);
