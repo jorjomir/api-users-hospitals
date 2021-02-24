@@ -15,6 +15,11 @@ class User {
         'email', 'first_name', 'last_name', 'type'
     );
 
+    // Used for ordering users
+    const ALL_USER_COLUMNS = array(
+        'id', 'email', 'first_name', 'last_name', 'type', 'workplace_id', 'created_at'
+    );
+
     const DOCTOR_TYPE = 1;
     const PATIENT_TYPE = 0;
 

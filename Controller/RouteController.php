@@ -24,6 +24,7 @@ class RouteController
         $this->route->put('/update-user',  'UserController@updateUser');
         $this->route->delete('/delete-user',  'UserController@deleteUser');
         $this->route->get('/get-all-users',  'UserController@getAllUsers');
+        $this->route->get('/search-users',  'UserController@searchUsers');
 
         /*
          * Hospital routes

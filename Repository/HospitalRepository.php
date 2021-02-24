@@ -75,6 +75,7 @@ class HospitalRepository extends Database
     }
 
     public function findAllOrderedByEmployeeCount($order) {
+
         // get them as variables so we can concatenate them into the query
         $hospital_table = parent::HOSPITALS_TABLE;
         $users_table = parent::USERS_TABLE;

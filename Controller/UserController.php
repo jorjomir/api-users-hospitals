@@ -94,13 +94,78 @@ class UserController
         $route_controller->blankResponse();
     }
 
+    public function searchUsers() {
+        $route_controller = new RouteController();
+        $data = $route_controller->getPostData();
+
+        $repo = new \Repository\UserRepository();
+
+        if(isset($data['workplace_id'])) {
+            $users = $repo->searchByWorkplaceId($data['workplace_id']);
+            $route_controller->response($users);
+
+            return;
+        } elseif (isset($data['workplace_title'])) {
+            $users = $repo->searchByWorkplaceTitle($data['workplace_title']);
+            $route_controller->response($users);
+
+            return;
+        } elseif (isset($data['user_name'])) {
+            $users = $repo->searchByName($data['user_name']);
+            $route_controller->response($users);
+
+            return;
+        } else {
+            $route_controller->returnError(400, "You must include search parameters!");
+        }
+
+        $repo = new \Repository\HospitalRepository();
+        $hospitals = $repo->findAllOrderedByEmployeeCount($order);
+
+        $route_controller->response($hospitals);
+    }
+
     public function getAllUsers() {
         $route_controller = new RouteController();
+        $data = $route_controller->getPostData();
+
+        if(isset($data['order_column'])) {
+            $this->getAllUsersOrdered($data);
+
+            return;
+        }
+
         $repo = new \Repository\UserRepository();
 
         $users = $repo->findAll();
 
         $route_controller->response($users);
+    }
+
+    public function getAllUsersOrdered($data) {
+        $route_controller = new RouteController();
+
+        $order = '';
+
+        if(isset($data['order_type'])) {
+            $order = strtoupper($data['order_type']);
+
+            if($order != "ASC" && $order != "DESC") {
+                $route_controller->returnError(400, "Invalid order type provided!");
+            }
+        } else {
+            $order = 'ASC';
+        }
+
+        if(!in_array($data['order_column'], User::ALL_USER_COLUMNS)) {
+            $route_controller->returnError(400, "Invalid order column provided!");
+        }
+
+        $repo = new \Repository\UserRepository();
+        $users = $repo->findAllOrdered($data['order_column'], $order);
+
+        $route_controller->response($users);
+
     }
 
     function allKeysExist(array $keys, array $arr) {
