@@ -4,11 +4,6 @@ namespace Repository;
 
 class Database
 {
-    const  HOST     = "localhost"; // your host name
-    const  USERNAME = "root";      // your user name
-    const  PASSWORD = "";          // your password
-    const  DB       = "credo";     // your database name
-
     public $mysqli;
 
     const USERS_TABLE = "users";
@@ -19,7 +14,7 @@ class Database
     }
 
     private function db_connect(){
-        $this->mysqli = new \MySQLi(self::HOST, self::USERNAME, self::PASSWORD, self::DB);
+        $this->mysqli = new \MySQLi($_ENV['host'], $_ENV['username'], $_ENV['password'], $_ENV['db']);
 
         return $this->mysqli;
     }
