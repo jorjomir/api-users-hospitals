@@ -46,7 +46,9 @@ class UserController
             $user->setWorkplaceId(NULL);
         }
 
-        $repository->createNewUser($user);
+        if($repository->createNewUser($user) == false) {
+            $route_controller->returnError(400, "Server error");
+        }
 
         $route_controller->blankResponse();
     }
@@ -72,7 +74,9 @@ class UserController
             $input_user->setWorkplaceId(NULL);
         }
 
-        $repo->updateUser($input_user);
+        if($repo->updateUser($input_user) == false) {
+            $route_controller->returnError(500, "Server error");
+        }
 
         $route_controller->blankResponse();
     }
@@ -90,7 +94,10 @@ class UserController
         if(count($user) == 0) {
             $route_controller->returnError(400, "No user with this ID was found!");
         }
-        $repo->deleteUser($data['id']);
+        
+        if($repo->deleteUser($data['id']) == false) {
+            $route_controller->returnError(500, "Server error");
+        }
 
         $route_controller->blankResponse();
     }
@@ -104,18 +111,29 @@ class UserController
         if(isset($data['workplace_id'])) {
 
             $users = $repo->searchByWorkplaceId($data['workplace_id']);
+            if($users == false) {
+                $route_controller->returnError(500, "Server error");
+            }
             $route_controller->response($users);
 
             return;
         } elseif (isset($data['workplace_title'])) {
 
             $users = $repo->searchByWorkplaceTitle($data['workplace_title']);
+
+            if($users == false) {
+                $route_controller->returnError(500, "Server error");
+            }
             $route_controller->response($users);
 
             return;
         } elseif (isset($data['user_name'])) {
 
             $users = $repo->searchByName($data['user_name']);
+
+            if($users == false) {
+                $route_controller->returnError(500, "Server error");
+            }
             $route_controller->response($users);
 
             return;
@@ -137,6 +155,10 @@ class UserController
         $repo = new \Repository\UserRepository();
 
         $users = $repo->findAll();
+
+        if($users == false) {
+            $route_controller->returnError(500, "Server error");
+        }
 
         $route_controller->response($users);
     }
@@ -162,7 +184,10 @@ class UserController
 
         $repo = new \Repository\UserRepository();
         $users = $repo->findAllOrdered($data['order_column'], $order);
-
+        
+        if($users == false) {
+            $route_controller->returnError(500, "Server error");
+        }
         $route_controller->response($users);
 
     }

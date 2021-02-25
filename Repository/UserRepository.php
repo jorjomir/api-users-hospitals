@@ -36,7 +36,11 @@ class UserRepository extends Database
             parent::USERS_TABLE, $user->getEmail(), $user->getFirstName(), $user->getLastName(),
             $user->getType(), $user->getWorkplaceId());
 
-        parent::executeQuery($query);
+        if(parent::executeQuery($query) == false) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public function updateUser(\Model\User $user) {
@@ -46,7 +50,11 @@ class UserRepository extends Database
             parent::USERS_TABLE, $user->getEmail(), $user->getFirstName(), $user->getLastName(),
             $user->getType(), $user->getWorkplaceId(), $user->getId());
 
-        parent::executeQuery($query);
+        if(parent::executeQuery($query) == false) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public function deleteUser($user_id) {
@@ -54,7 +62,11 @@ class UserRepository extends Database
             "DELETE FROM %s WHERE id=%s",
             parent::USERS_TABLE, $user_id);
 
-        parent::executeQuery($query);
+        if(parent::executeQuery($query) == false) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public function searchByWorkplaceId($workplace_id) {
