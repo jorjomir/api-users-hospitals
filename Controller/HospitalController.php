@@ -19,7 +19,7 @@ class HospitalController
 
         $res = $repo->getHospital($data['id']);
         if(count($res) == 0) {
-            $route_controller->returnError(400, "No hospital with this ID was found!");
+            $route_controller->returnError(404, "No hospital with this ID was found!");
         }
 
         $hospital = new \Model\Hospital();
@@ -98,7 +98,7 @@ class HospitalController
 
         $hospital = $repo->getHospital($data['id']);
         if(count($hospital) == 0) {
-            $route_controller->returnError(400, "No hospital with this ID was found!");
+            $route_controller->returnError(404, "No hospital with this ID was found!");
         }
 
         if($delete_method == Hospital::EMPLOYEES_METHOD_DELETE) {

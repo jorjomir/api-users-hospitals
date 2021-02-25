@@ -18,7 +18,7 @@ class UserController
 
         $res = $repo->getUser($data['id']);
         if(count($res) == 0) {
-            $route_controller->returnError(400, "No user with this ID was found!");
+            $route_controller->returnError(404, "No user with this ID was found!");
         }
 
         $user = new \Model\User();
@@ -47,7 +47,7 @@ class UserController
         }
 
         if($repository->createNewUser($user) == false) {
-            $route_controller->returnError(400, "Server error");
+            $route_controller->returnError(500, "Server error");
         }
 
         $route_controller->blankResponse();
@@ -67,7 +67,7 @@ class UserController
         $existing_user = $repo->getUser($input_user->getId());
 
         if( count($existing_user) == 0 ) {
-            $route_controller->returnError(400, "There's no existing user with this ID!");
+            $route_controller->returnError(404, "There's no existing user with this ID!");
         }
 
         if($input_user->getType() == User::PATIENT_TYPE) {
@@ -92,7 +92,7 @@ class UserController
 
         $user = $repo->getUser($data['id']);
         if(count($user) == 0) {
-            $route_controller->returnError(400, "No user with this ID was found!");
+            $route_controller->returnError(404, "No user with this ID was found!");
         }
         
         if($repo->deleteUser($data['id']) == false) {
