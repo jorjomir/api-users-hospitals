@@ -2,6 +2,8 @@
 
 namespace Model;
 
+use Repository\Database;
+
 class User {
     private $id;
     private $email;
@@ -148,8 +150,10 @@ class User {
      */
     public function getWorkplaceId()
     {
-        if(is_null($this->workplace_id)) {
-            return 'NULL';
+        if(is_null($this->workplace_id) || $this->workplace_id == '') {
+            return NULL;
+        } elseif (!isset($this->workplace_id)) {
+            return NULL;
         } else {
             return $this->workplace_id;
         }
@@ -160,7 +164,13 @@ class User {
      */
     public function setWorkplaceId($workplace_id)
     {
-        $this->workplace_id = $workplace_id;
+        if(is_null($workplace_id) || $workplace_id == '') {
+            $this->workplace_id = NULL;
+        } elseif (!isset($workplace_id)) {
+            $this->workplace_id = NULL;
+        } else {
+            $this->workplace_id = $workplace_id;
+        }
     }
 
     /**
