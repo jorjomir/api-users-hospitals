@@ -2,9 +2,11 @@
 
 namespace Repository;
 
+use PDO;
+
 class Database
 {
-    public $mysqli;
+    public $conn;
 
     const USERS_TABLE = "users";
     const HOSPITALS_TABLE = "hospitals";
@@ -14,25 +16,56 @@ class Database
     }
 
     private function db_connect(){
-        $this->mysqli = new \MySQLi($_ENV['host'], $_ENV['username'], $_ENV['password'], $_ENV['db']);
+        // Get credentials
+        $host = $_ENV['host'];
+        $user = $_ENV['username'];
+        $pass = $_ENV['password'];
+        $db   = $_ENV['db'];
 
-        return $this->mysqli;
+        try {
+            $this->conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+
+        } catch (PDOException $e) {
+            die("Error, please try again later!");
+        }
+
+        return $this->conn;
     }
 
     public function executeQuery($query) {
-        if (!$results = $this->mysqli->query($query)) {
-            header("HTTP/1.0 400 Input data error!");
-            die;
+        $this->checkConnection();
+
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+
+        } catch (PDOException $e) {
+            return false;
         }
     }
 
     public function getResults($query) {
-        $results = $this->mysqli->query($query);
+        $this->checkConnection();
 
-        return $this->parseResults($results);
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+
+        } catch (PDOException $e) {
+            return false;
+        }
+
+
+        return $this->parseResults($stmt);
     }
 
     public function parseResults($res) {
-        return $res->fetch_all(MYSQLI_ASSOC);
+        return $res->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function checkConnection() {
+        if(!$this->conn) {
+            $this->db_connect();
+        }
     }
 }
