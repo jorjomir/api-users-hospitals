@@ -28,7 +28,11 @@ class HospitalRepository extends Database
                     VALUES ('%s', '%s', '%s')",
             parent::HOSPITALS_TABLE, $hospital->getName(), $hospital->getAddress(), $hospital->getPhone());
 
-        parent::executeQuery($query);
+        if(parent::executeQuery($query) == false) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public function updateHospital(\Model\Hospital $hospital) {
@@ -37,7 +41,11 @@ class HospitalRepository extends Database
             parent::HOSPITALS_TABLE, $hospital->getName(), $hospital->getAddress(), $hospital->getPhone(),
             $hospital->getId());
 
-        parent::executeQuery($query);
+        if(parent::executeQuery($query) == false) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public function deleteHospitalAndSaveUsers($hospital_id) {
@@ -46,7 +54,9 @@ class HospitalRepository extends Database
             parent::USERS_TABLE, User::PATIENT_TYPE, $hospital_id
         );
 
-        parent::executeQuery($update_users_workplace_query);
+        if(parent::executeQuery($update_users_workplace_query) == false) {
+            return false;
+        }
 
         $this->deleteHospital($hospital_id);
     }
@@ -57,7 +67,9 @@ class HospitalRepository extends Database
             parent::USERS_TABLE, $hospital_id
         );
 
-        parent::executeQuery($delete_users_query);
+        if(parent::executeQuery($delete_users_query) == false) {
+            return false;
+        }
 
         $this->deleteHospital($hospital_id);
     }
@@ -67,7 +79,11 @@ class HospitalRepository extends Database
             "DELETE FROM %s WHERE id=%s",
             parent::HOSPITALS_TABLE, $hospital_id);
 
-        parent::executeQuery($delete_hospital_query);
+        if(parent::executeQuery($delete_hospital_query) == false) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public function findAll() {

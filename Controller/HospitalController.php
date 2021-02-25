@@ -39,7 +39,9 @@ class HospitalController
         $hospital->setAllData($data);
 
         $repository = new \Repository\HospitalRepository();
-        $repository->createNewHospital($hospital);
+        if($repository->createNewHospital($hospital) == false ) {
+            $route_controller->returnError(500, "Server error");
+        }
 
         $route_controller->blankResponse();
     }
@@ -58,10 +60,12 @@ class HospitalController
         $existing_record = $repo->getHospital($requested_hospital->getId());
 
         if( count($existing_record) == 0 ) {
-            $route_controller->returnError(400, "There's no existing hospital with this ID!");
+            $route_controller->returnError(404, "There's no existing hospital with this ID!");
         }
 
-        $repo->updateHospital($requested_hospital);
+        if($repo->updateHospital($requested_hospital) == false) {
+            $route_controller->returnError(500, "Server error");
+        }
 
         $route_controller->blankResponse();
     }
@@ -98,9 +102,13 @@ class HospitalController
         }
 
         if($delete_method == Hospital::EMPLOYEES_METHOD_DELETE) {
-            $repo->deleteHospitalAndDeleteUsers($data['id']);
+            if($repo->deleteHospitalAndDeleteUsers($data['id']) == false) {
+                $route_controller->returnError(500, "Server error");
+            }
         } else {
-            $repo->deleteHospitalAndSaveUsers($data['id']);
+            if($repo->deleteHospitalAndSaveUsers($data['id'])) {
+                $route_controller->returnError(500, "Server error");
+            }
         }
 
         $route_controller->blankResponse();
@@ -117,6 +125,9 @@ class HospitalController
         }
 
         $hospitals = $repo->findAll();
+        if($hospitals == false) {
+            $route_controller->returnError(500, "Server error");
+        }
 
         $route_controller->response($hospitals);
     }
@@ -131,7 +142,9 @@ class HospitalController
 
         $repo = new \Repository\HospitalRepository();
         $hospitals = $repo->findAllOrderedByEmployeeCount($order);
-
+        if($hospitals == false) {
+            $route_controller->returnError(500, "Server error");
+        }
         $route_controller->response($hospitals);
     }
 
