@@ -184,7 +184,7 @@ class UserController
 
         $repo = new \Repository\UserRepository();
         $users = $repo->findAllOrdered($data['order_column'], $order);
-        
+
         if($users == false) {
             $route_controller->returnError(500, "Server error");
         }
