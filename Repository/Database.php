@@ -8,9 +8,6 @@ class Database
 {
     public $conn;
 
-    const CONNECT_OPTIONS_ARR = array(PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-
-
     const USERS_TABLE = "users";
     const HOSPITALS_TABLE = "hospitals";
 
@@ -26,7 +23,7 @@ class Database
         $db   = $_ENV['db'];
 
         try {
-            $this->conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass, self::CONNECT_OPTIONS_ARR);
+            $this->conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
 
         } catch (PDOException $e) {
             return false;
