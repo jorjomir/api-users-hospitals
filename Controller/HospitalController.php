@@ -39,7 +39,7 @@ class HospitalController
         $hospital->setAllData($data);
 
         $repository = new \Repository\HospitalRepository();
-        if($repository->createNewHospital($hospital) == false ) {
+        if($repository->createNewHospital($hospital) === false ) {
             $route_controller->returnError(500, "Server error");
         }
 

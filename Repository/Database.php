@@ -41,7 +41,7 @@ class Database
         try{
             $stmt = $this->conn->prepare($query);
             $stmt->execute($params);
-
+            return true;
         } catch (PDOException $e) {
             return false;
         }
